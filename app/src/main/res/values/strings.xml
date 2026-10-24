@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">E90 Пульт</string>
+    <string name="widget_name">E90 Пульт</string>
+    <string name="widget_description">Кнопки сигнализации и последний статус</string>
+</resources>
