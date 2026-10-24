@@ -144,7 +144,7 @@ fun CommandsEditorScreen(state: AppState, live: Live) {
                 }
                 withContext(Dispatchers.Main) {
                     if (r != null) {
-                        text = r.removePrefix("﻿")
+                        text = r.removePrefix("\uFEFF")
                         message = "Файл загружен в редактор — проверьте и сохраните" to true
                     } else {
                         message = "Не удалось прочитать файл" to false

@@ -34,6 +34,7 @@ import ru.e90pult.data.BalanceType
 import ru.e90pult.data.ProfileEntity
 import ru.e90pult.data.RunState
 import ru.e90pult.engine.Engine
+import java.util.Locale
 
 private fun num(s: String): Double? = s.trim().replace(',', '.').toDoubleOrNull()
 private fun numText(v: Double): String = if (v == 0.0) "" else ru.e90pult.core.Describe.volts(v)
@@ -84,7 +85,7 @@ private fun BalanceBody(state: AppState, live: Live, p: ProfileEntity) {
                     color = Pal.Text, fontSize = 13.sp
                 )
                 Spacer(Modifier.height(8.dp))
-                val days = String.format("%.1f", est.days).replace('.', ',')
+                val days = String.format(Locale.ROOT, "%.1f", est.days).replace('.', ',')
                 Text(
                     "Расчёт за $days дн.: SMS от модуля −${Fmt.money(est.smsCost)}, абонплата −${Fmt.money(est.feeCost)}, " +
                         "трафик −${Fmt.money(est.trafficCost)}, пополнения +${Fmt.money(est.adjustments)}",

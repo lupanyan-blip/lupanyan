@@ -49,6 +49,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import kotlin.math.max
 import kotlin.math.min
+import java.util.Locale
 
 @Composable
 fun ChartsScreen(state: AppState, live: Live) {
@@ -118,7 +119,7 @@ fun ChartsScreen(state: AppState, live: Live) {
     }
 }
 
-private fun fmtV(v: Double, kind: Int) = if (kind == 0) Describe.volts(v) else String.format("%.1f", v).replace('.', ',')
+private fun fmtV(v: Double, kind: Int) = if (kind == 0) Describe.volts(v) else String.format(Locale.ROOT, "%.1f", v).replace('.', ',')
 
 /** Простой линейный график по времени. */
 @Composable
@@ -163,7 +164,7 @@ fun LineChart(
             val v = yMin + (yMax - yMin) * i / 4
             val yy = y(v)
             drawLine(grid, Offset(left, yy), Offset(left + w, yy), strokeWidth = 1f)
-            val label = if (decimals == 0) v.toInt().toString() else String.format("%.1f", v).replace('.', ',')
+            val label = if (decimals == 0) v.toInt().toString() else String.format(Locale.ROOT, "%.1f", v).replace('.', ',')
             drawIntoCanvas { it.nativeCanvas.drawText(label, 2.dp.toPx(), yy + 4.dp.toPx(), paint) }
         }
         thresholds.forEach { (t, c) ->
